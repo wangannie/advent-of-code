@@ -21,12 +21,9 @@ def part1(data):
 def part2(data):
     nums = [int(n) for n in data.splitlines()]
     nums.sort()
-    target = nums[-1] + 3
-    nums.append(target)
     dp = {}
     dp[0] = 1
-    dp[nums[0]] = 1
-    for i in range(1, len(nums)):
+    for i in range(len(nums)):
         dp[nums[i]] = dp.get(nums[i] - 1, 0) + dp.get(nums[i] - 2, 0) + dp.get(
             nums[i] - 3, 0)
-    return dp[target]
+    return dp[nums[-1]]
